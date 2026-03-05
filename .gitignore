@@ -1,0 +1,12 @@
+# Python cace
+__pycache__/
+*.pyc
+
+# SQLite database
+*.db
+
+# VSCode settings
+.vscode/
+
+# Environment variables
+.env
