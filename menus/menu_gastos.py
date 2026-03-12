@@ -1,7 +1,8 @@
-from datetime import datetime
 from database.database import criar_gasto, listar_gastos, editar_gasto, remover_gastos, listar_categorias
 from services.services import calcular_total
-
+from utils.input_utils import input_float, input_int
+from utils.date_utils import validar_data, data_hoje
+from utils.logger_utils import logger
 
 def menu_gastos(usuario):
 
@@ -14,40 +15,38 @@ def menu_gastos(usuario):
         print("4. Editar gasto")
         print("0. Voltar")
 
-        escolha = input("Escolha: ")
+        escolha = input_int("Escolha: ")
 
-        if escolha == "1":
+        if escolha == 1:
 
             descricao = input('Digite a descrição do gasto: ')
 
-            try:
-                valor = float(input('Digite o valor do gasto: '))
-            except ValueError:
-                print('Valor inválido.')
-                continue
+           
+            valor = input_float('Digite o valor do gasto: ')
+           
 
             categoria = listar_categorias()
             print("\nCategorias disponíveis:")
             for cat in categoria:
                 print(f'{cat[0]} - {cat[1]}')
-            categoria_id = int(input('Digite o ID da categoria: '))
+            categoria_id = input_int('Digite o ID da categoria: ')
 
             data_input = input('Digite a data (dd/mm/aaaa) ou Enter: ')
 
             if not data_input:
-                data = datetime.now().strftime('%d/%m/%Y')
+                data = data_hoje()
             else:
-                try:
-                    datetime.strptime(data_input, '%d/%m/%Y')
+                if validar_data(data_input):
                     data = data_input
-                except ValueError:
-                    print('Data inválida.')
+                else:
+                    print("Data Inválida, tente novamente!")
                     continue
 
             criar_gasto(usuario[0], descricao, valor, categoria_id, data)
+            logger.info(f"Gasto criado | usuario_nome={usuario[1]} | descricao={descricao} | valor={valor}")
             print('Gasto adicionado com sucesso!')
             
-        elif escolha == "2":
+        elif escolha == 2:
 
             gastos = listar_gastos(usuario[0])
 
@@ -66,7 +65,7 @@ def menu_gastos(usuario):
             total = calcular_total(usuario[0])
             print(f'Total de gastos: R${total:.2f}')
 
-        elif escolha == "3":
+        elif escolha == 3:
 
             gastos = listar_gastos(usuario[0])
 
@@ -77,14 +76,13 @@ def menu_gastos(usuario):
             for gasto in gastos:
                 print(f'{gasto[0]} - {gasto[1]} (R${gasto[2]:.2f})')
 
-            try:
-                gasto_id = int(input('Digite o ID do gasto: '))
-                remover_gastos(gasto_id)
-                print('Gasto removido com sucesso!')
-            except ValueError:
-                print('Entrada inválida.')
+            gasto_id = input_int('Digite o ID do gasto: ')
+            remover_gastos(gasto_id)
+            logger.info(f"Gasto removido | usuario_nome={usuario[1]} | gasto_id={gasto_id}")
+            print('Gasto removido com sucesso!')
+          
 
-        elif escolha == "4":
+        elif escolha == 4:
 
             gastos = listar_gastos(usuario[0])
 
@@ -95,15 +93,15 @@ def menu_gastos(usuario):
             for gasto in gastos:
                 print(f'{gasto[0]} - {gasto[1]} (R${gasto[2]:.2f})')
 
-            try:
+            
 
-                gasto_id = int(input('Digite o ID do gasto: '))
+            gasto_id = input_int('Digite o ID do gasto: ')
 
-                nova_descricao = input('Nova descrição (Enter mantém): ')
-                novo_valor_input = input('Novo valor (Enter mantém): ')
-                nova_data_input = input('Nova data (Enter mantém): ')
+            nova_descricao = input('Nova descrição (Enter mantém): ')
+            novo_valor_input = input('Novo valor (Enter mantém): ')
+            nova_data_input = input('Nova data (Enter mantém): ')
 
-                for gasto in gastos:
+            for gasto in gastos:
 
                     if gasto[0] == gasto_id:
 
@@ -120,13 +118,11 @@ def menu_gastos(usuario):
                             data = gasto[4]
 
                         editar_gasto(gasto_id, descricao, valor, data)
+                        logger.info(f"Gasto editado | usuario_nome={usuario[1]} | gasto_id{gasto_id}")
                         print("Gasto editado com sucesso!")
                         break
 
-            except ValueError:
-                print("Entrada inválida.")
-
-        elif escolha == "0":
+        elif escolha == 0:
             break
         else:
             print("Opção inválida.")

@@ -1,7 +1,8 @@
 import csv
+import os
 from datetime import datetime
 from database.database import listar_gastos
-
+from config.config import CSV_DIR
 
 def exportar_gastos_csv(usuario_id, mes, ano):
 
@@ -21,7 +22,11 @@ def exportar_gastos_csv(usuario_id, mes, ano):
         print("Nenhum gasto encontrado neste período.")
         return
     
-    nome_arquivo = f'relatorio_{mes}_{ano}.csv'
+    os.makedirs(CSV_DIR, exist_ok=True)
+    nome_arquivo = os.path.join(
+        CSV_DIR,
+        f'relatorio_{mes}_{ano}.csv'
+        )
 
     with open(nome_arquivo, "w", newline='', encoding='utf-8') as arquivo:
        writer = csv.writer(arquivo)

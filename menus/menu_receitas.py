@@ -1,7 +1,7 @@
-from datetime import datetime
 from database.database import criar_receitas, listar_receitas
-
-
+from utils.input_utils import input_float, input_int
+from utils.date_utils import validar_data, data_hoje
+from utils.logger_utils import logger
 
 def menu_receitas(usuario):
 
@@ -12,34 +12,32 @@ def menu_receitas(usuario):
         print("2. Ver receitas")
         print("0. Voltar")
 
-        escolha = input("Escolha: ")
+        escolha = input_int("Escolha: ")
 
-        if escolha == "1":
+        if escolha == 1:
 
             descricao = input('Digite a descrição da receita: ')
 
-            try:
-                valor = float(input('Digite o valor da receita: '))
-            except ValueError:
-                print('Valor inválido.')
-                continue
+            
+            valor = input_float('Digite o valor da receita: ')
+            
 
             data_input = input('Digite a data (dd/mm/aaaa) ou Enter: ')
 
             if not data_input:
-                data = datetime.now().strftime('%d/%m/%Y')
+                data = data_hoje()
             else:
-                try:
-                    datetime.strptime(data_input, '%d/%m/%Y')
+                if validar_data(data_input):
                     data = data_input
-                except ValueError:
-                    print('Data inválida.')
+                else:
+                    print("Data Inválida, tente novamente!")
                     continue
 
             criar_receitas(usuario[0], descricao, valor, data)
+            logger.info(f"Receita criada | usuario_nome={usuario[1]} | descricao={descricao} | valor = {valor}")
             print('Receita adicionada!')
 
-        elif escolha == "2":
+        elif escolha == 2:
 
             receitas = listar_receitas(usuario[0])
 
@@ -60,7 +58,7 @@ def menu_receitas(usuario):
 
             print(f'Total de receitas: R${total:.2f}')
 
-        elif escolha == "0":
+        elif escolha == 0:
             break
         else:
             print("Opção inválida.")

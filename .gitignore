@@ -1,12 +1,30 @@
-# Python cace
+# Python cache
 __pycache__/
 *.pyc
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+.env
 
 # SQLite database
 *.db
 
+# Logs
+*.log
+logs/
+
+# Relatorios Gerados
+relatorios/csv/*
+relatorios/pdf/*
+relatorios/graficos/*
+
+# OS files
+.DS_Store
+Thumbs.db
+
 # VSCode settings
 .vscode/
 
-# Environment variables
-.env

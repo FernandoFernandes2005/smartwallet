@@ -1,99 +1,159 @@
 # SMARTWALLET
 
-Smartwallet é um sistema de controle financeiro desenvolvido em Python que permite o usuário registrar, organizar e analisar seus gastos e receitas pessoais.
-O projeto possui autenticação de usuários, registros financeiros e dashboard de análise de despesas, utilizando SQLite como banco de dados.
+# BR Portuguese version available here: [README-pt.md](README-pt.md)
+
+SmartWallet is a personal financial management system developed in **Python** that allows users to register, analyze, and track their finances.
+The project was created with a focus on **financial organization, data analysis, and backend development best practices.**
 
 ---
 
-# FUNCIONALIDADES
-- Cadastro de usuários
-- Login com senha criptografada (SHA-256)
-- Registro e Listagem de gastos
-- Edição e remoção de gastos
-- Registro e Listagem de receitas
-- Sistema de categorias de despesas
-- Relatório mensal de despesas
-- Resumo automático de gastos por mês
-- Dashboard financeiro com "gráfico de distribuição"
-- Exportação de relatórios em CSV
-
+# FEATURES
+### Users
+- User registration
+- Secure login authentication
+- Passwords stored using **SHA-256 hashing**
 ---
 
-# TECNOLOGIAS UTILIZADAS
+### Expense Management
+- Add expenses
+- Edit expenses
+- Remove expenses
+- List expenses
+- Classification by **categories**
+---
+
+### Income Management
+- Register income
+- List income
+---
+
+### Financial Dashboard
+- Monthly financial summary
+- Expense distribution by category
+- Financial evolution chart
+- Balance visualization
+- Integration with financial goals
+---
+
+### Financial Goals
+- Create financial goals
+- View goal progress
+- Update goal progress
+---
+
+### Reports
+- Monthly expense breakdown
+- Expenses by category
+- Export reports in CSV
+- Export reports in PDF
+- Automatic generation of financial charts
+---
+
+# TECHNOLOGIES USED
 - Python
 - SQLite
-- Hashlib (criptografia de senha)
-- CSV (exportação de relatórios)
+- Matplotlib
+- ReportLab
+- Hashlib
+- CSV
 
 ---
 
-# ESTRUTURA DO PROJETO
-
-SmartWallet Project
-- main.py
-- database/
+# PROJECT STRUCTURE
+SmartWallet Project/
+- config/
+    - config.py
+- database
     - database.py
+- menus/
+    - menu_principal.py
+    - menu_gastos.py
+    - menu_receitas.py
+    - menu_dashboard.py
+    - menu_relatorios.py
+    - menu_metas.py
+- utils/
+    - auth_utils.py
+    - date_utils.py
+    - grafico_utils.py
+    - input_utils.py
+    - logger_utils.py
+    - pdf_utils.py
+    - setup_utils.py
 - services/
-    - services.py
+    - serices.py
 - models/
     - models.py
-- smartwallet.db
+- relatorios/
+    - csv/
+    - pdf/
+    - graficos/
+- main.py
 - requirements.txt
-- .gitignore
-- README.MD
+- README.md
 
 ---
 
-# COMO EXECUTAR O PROJETO
+# HOW TO RUN THE PROJECT
+1 - Clone the repository -  git clone https://github.com/FernandoFernandes2005/smartwallet.git
 
-1 - Clone o repositório
-(coloque o repositório aqui depois)
-2 - Entre na pasta do projeto - cd smartwallet
-3 - Execute o programa - python main.py
+2 - Enter the project folder - cd smartwallet
 
----
+3 - Install the dependencies - pip install -r requirements.txt
 
-# BANCO DE DADOS
-
-O projeto utiliza **SQLite**, criando automaticamente o arquivo "smartwallet.db".
-As principais tabelas são:
-- 'usuarios' -> Armazena informações dos usuários
-- 'gastos' -> Despesas registradas pelos usuários
-- 'categorias' -> Categorias de despesas
-- 'Receitas' -> Receitas registradas pelos usuários
-
-Os gastos usam **chave estrangeira para categorias**, garantindo melhor organização e integridade de dados.
+4 - Run the system - python main.py
 
 ---
 
-# SEGURANÇA
+# DATABASE
+The project uses SQLite as a local database.
+The tables are automatically created on the first execution of the system.
 
-As senhas dos usuários são armazenadas utilizando **hash SHA256**, realizando sua criptografia e garantindo maior segurança no armazenamento.
-
----
-
-# ÚLTIMA ATUALIZAÇÃO (v1.1)
-
-Novidades desta versão:
-- Implementação de categorias de despesas com banco relacional;
-- Relatório de gastos por categoria;
-- Dashboard financeiro com distribuição de gastos
-- Exportação de relatórios em CSV
-- Melhorias na estrutura do banco de dados
+The main tables are:
+- 'usuarios' -> Stores user information
+- 'gastos' -> Expenses recorded by users
+- 'categorias' -> Expense categories
+- 'receitas' -> Income recorded by users
+- 'metas' -> Financial goals defined by the user
 
 ---
 
-# MELHORIAS FUTURAS
-
-- Transformar o sistema em uma **API REST com FASTAPI**
-- Implementar autenticação com **JWT**
-- Criar interface web
-- Adicionar testes automatizados
+# SECURITY
+- Passwords are encrypted using **SHA-256**
+- Data is stored locally using **SQLite**
 
 ---
 
-# AUTOR
+# LATEST UPDATES
+- Current Version
+- Financial dashboard with monthly summary
+- Financial evolution chart
+- Expense distribution by category
+- Financial goals system
+- Export reports in **CSV**
+- Export reports in **PDF**
+- Automatic generation of financial charts
+- Modular project structure
+- Logging system
+- Centralized configuration file
 
-Projeto desenvolvido por **Fernando Fernandes**.
+### New in this version
 
+- Project architecture refactoring
+- Modular organization (menus, utils, database, services)
+- Implementation of charts using **Matplotlib**
+- Implementation of PDF reports using **ReportLab**
 
+---
+
+# FUTURE IMPROVEMENTS
+
+- REST API with **FastAPI**
+- Authentication using **JWT**
+- Web Interface
+- Automated tests using **Pytest**
+- Interactive dashboard
+
+AUTHOR
+
+Project developed by **Fernando Fernandes Silva.**
