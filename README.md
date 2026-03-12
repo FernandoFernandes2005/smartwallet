@@ -154,6 +154,8 @@ The main tables are:
 - Automated tests using **Pytest**
 - Interactive dashboard
 
-AUTHOR
+---
+
+# AUTHOR
 
 Project developed by **Fernando Fernandes Silva.**
