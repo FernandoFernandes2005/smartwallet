@@ -1,8 +1,10 @@
-from database.database import listar_gastos, gastos_categoria, calcular_gastos_mes, calcular_receitas_mes, progresso_metas, categorias_mes
-from menus.exportar import exportar_gastos_csv
+from database.gastos_db import listar_gastos
+from database.metas_db import progresso_metas
+from database.receitas_db import calcular_receitas_mes
+from database.dashboard_db import calcular_gastos_mes
+from database.relatorios_db import gastos_categoria, gastos_descricao, categorias_mes
 from datetime import datetime
-from utils.input_utils import pedir_mes_ano, input_int
-from utils.pdf_utils import gerar_pdf
+from utils import gerar_pdf, pedir_mes_ano, input_int, exportar_gastos_csv
 
 def menu_relatorios(usuario):
 

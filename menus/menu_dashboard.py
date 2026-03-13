@@ -1,7 +1,8 @@
-from database.database import calcular_receitas_mes, calcular_gastos_mes, gastos_descricao, categorias_mes, saldo_mes, progresso_metas, resumo_financeiro
-from utils.input_utils import pedir_mes_ano
-from utils.grafico_utils import gerar_grafico_categorias, gerar_grafico_evo
-from utils.input_utils import input_int
+from database import (
+    calcular_gastos_mes, calcular_receitas_mes, saldo_mes,
+    resumo_financeiro, progresso_metas, gastos_descricao, categorias_mes
+)
+from utils import input_int, gerar_grafico_categorias,gerar_grafico_evo, pedir_mes_ano
 from menus.menu_metas import menu_metas
 
 def menu_dashboard(usuario):

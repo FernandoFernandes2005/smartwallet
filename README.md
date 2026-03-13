@@ -64,7 +64,16 @@ SmartWallet Project/
 - config/
     - config.py
 - database
-    - database.py
+    - __init__.py
+    - categorias_db.py
+    - connection.py
+    - dashboard_db.py
+    - gastos_db.py
+    - metas_db.py
+    - receitas_db.py
+    - relatorios_db.py
+    - schema.py
+    - usuarios_db.py
 - menus/
     - menu_principal.py
     - menu_gastos.py
@@ -73,6 +82,8 @@ SmartWallet Project/
     - menu_relatorios.py
     - menu_metas.py
 - utils/
+     - __init__.py
+    - exportar_utils.py
     - auth_utils.py
     - date_utils.py
     - grafico_utils.py
@@ -82,8 +93,6 @@ SmartWallet Project/
     - setup_utils.py
 - services/
     - serices.py
-- models/
-    - models.py
 - relatorios/
     - csv/
     - pdf/
@@ -136,13 +145,30 @@ The main tables are:
 - Modular project structure
 - Logging system
 - Centralized configuration file
-
-### New in this version
-
 - Project architecture refactoring
 - Modular organization (menus, utils, database, services)
 - Implementation of charts using **Matplotlib**
 - Implementation of PDF reports using **ReportLab**
+
+### NEW IN THIS VERSION
+### Project Architecture (Refactor)
+- Project architecture refactoring
+### Project Architecture (Refactor)
+
+- Complete modularization of the database layer
+- Separation of responsibilities into multiple modules:
+  - usuarios_db
+  - gastos_db
+  - receitas_db
+  - categorias_db
+  - metas_db
+  - relatorios_db
+  - dashboard_db
+- Creation of `__init__.py` files to simplify imports
+- Migration of CSV export functionality to the `utils` module
+- Simplification of the `services` layer
+- Removal of the unused `models` layer
+- Improved overall organization of the project architecture
 
 ---
 

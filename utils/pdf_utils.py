@@ -3,7 +3,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 from config.config import PDF_DIR, GRAFICOS_DIR
-from utils.grafico_utils import gerar_grafico_categorias
+from utils import gerar_grafico_categorias
 
 def gerar_pdf(usuario_id, mes, ano, receitas, gastos, saldo, categorias, metas):
 

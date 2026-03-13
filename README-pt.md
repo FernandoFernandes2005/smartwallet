@@ -64,7 +64,16 @@ SmartWallet Project/
 - config/
     - config.py
 - database
-    - database.py
+    - __init__.py
+    - categorias_db.py
+    - connection.py
+    - dashboard_db.py
+    - gastos_db.py
+    - metas_db.py
+    - receitas_db.py
+    - relatorios_db.py
+    - schema.py
+    - usuarios_db.py
 - menus/
     - menu_principal.py
     - menu_gastos.py
@@ -73,6 +82,8 @@ SmartWallet Project/
     - menu_relatorios.py
     - menu_metas.py
 - utils/
+    - __init__.py
+    - exportar_utils.py
     - auth_utils.py
     - date_utils.py
     - grafico_utils.py
@@ -81,9 +92,7 @@ SmartWallet Project/
     - pdf_utils.py
     - setup_utils.py
 - services/
-    - serices.py
-- models/
-    - models.py
+    - services.py
 - relatorios/
     - csv/
     - pdf/
@@ -139,12 +148,29 @@ As principais tabelas são:
 - Estrutura modular do projeto
 - Sistema de logs
 - Arquivo de configuração centralizado
-
-### Novidades desta versão:
 - Refatoração da arquitetura do projeto
 - Organização em módulos ('menus', 'utils', 'database', 'services')
 - Implementação de gráficos usando **Matplotlib**
 - Implementação de relatórios PDF usando **ReportLab**
+
+### Novidades desta versão:
+### Arquitetura do Projeto (Refatoração)
+- Modularização das responsabilidades da camada de banco de dados
+- Separação das responsabilidades em múltiplos módulos:
+    - usuarios_db
+    - gastos_db
+    - receitas_db
+    - categorias_db
+    - metas_db
+    - relatorios_db
+    - dashboard_db
+- Criação de arquivos '__init__.py' para simplificação de imports
+- Migração da exportação CSV para 'utils'
+- Simplificação da camada 'services'
+- Remoção da camada 'models' que não era utilizada
+- Melhor organização da arquitetura do projeto
+
+
 ---
 
 # MELHORIAS FUTURAS

@@ -1,7 +1,5 @@
-from database.database import criar_receitas, listar_receitas
-from utils.input_utils import input_float, input_int
-from utils.date_utils import validar_data, data_hoje
-from utils.logger_utils import logger
+from database import criar_receitas, listar_receitas
+from utils import validar_data, data_hoje, input_float, input_int, logger
 
 def menu_receitas(usuario):
 

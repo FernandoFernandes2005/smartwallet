@@ -1,6 +1,6 @@
-from database.database import criar_meta, listar_metas, atualizar_metas
-from utils.input_utils import input_float, input_int
-from utils.logger_utils import logger
+from database import criar_meta, listar_metas, atualizar_metas
+from utils import input_float, input_int, logger
+
 
 def menu_metas(usuario):
     while True:

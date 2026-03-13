@@ -1,8 +1,6 @@
-from database.database import criar_gasto, listar_gastos, editar_gasto, remover_gastos, listar_categorias
+from database import criar_gasto, listar_gastos, editar_gasto, remover_gastos, listar_categorias
 from services.services import calcular_total
-from utils.input_utils import input_float, input_int
-from utils.date_utils import validar_data, data_hoje
-from utils.logger_utils import logger
+from utils import input_float, input_int, validar_data, data_hoje, logger
 
 def menu_gastos(usuario):
 

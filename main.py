@@ -1,6 +1,6 @@
-from database.database import criar_tabelas, criar_usuario, buscar_usuario, categorias_padrao
+from database import criar_tabelas, criar_usuario, buscar_usuario, categorias_padrao
 from menus.menu_principal import menu
-from utils.auth_utils import hash_senha
+from utils import hash_senha
 from utils.input_utils import input_int
 from utils.logger_utils import logger
 from utils.setup_utils import inicializar_pastas
