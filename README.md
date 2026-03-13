@@ -152,8 +152,6 @@ The main tables are:
 
 ### NEW IN THIS VERSION
 ### Project Architecture (Refactor)
-- Project architecture refactoring
-### Project Architecture (Refactor)
 
 - Complete modularization of the database layer
 - Separation of responsibilities into multiple modules:
